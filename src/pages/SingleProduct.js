@@ -128,8 +128,7 @@ const SingleProduct = () => {
                                 </div>
                                 <div className="d-flex gap-10 align-items-center my-3">
                                     <h3 className='product-head' >Product Link :</h3>
-                                    <a
-                                        href='javascript:void(0);'
+                                    <a href='javascript:void(0);'
                                         onClick={() => {
                                             copyToClipboard("https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d3Jpc3R3YXRjaHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80")
                                         }}>
