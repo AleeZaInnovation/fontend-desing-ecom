@@ -1,10 +1,4 @@
-[[redirects]]
-  from = "https://backend-ecom.netlify.app/api/v1/"
-  to = "https://fontend-ecom.netlify.app"
-  status = 200
-  force = true
-  headers = {X-From = "Netlify"}
 [[headers]]
   for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
+    [headers.values]
+      Access-Control-Allow-Origin = "*"
