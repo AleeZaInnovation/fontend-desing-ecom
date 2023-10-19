@@ -21,6 +21,10 @@ import PrivacyPolicy from './pages/PrivacyPolicy.js';
 import RefundPolicy from './pages/RefundPolicy.js';
 import ShippingPolicy from './pages/ShippingPolicy.js';
 import TermAndConditions from './pages/TermAndConditions.js';
+import { PrivateRoutes } from './routing/PrivateRoutes';
+import { OpenRoutes } from './routing/OpenRoutes';
+import Orders from './pages/Orders';
+import Profile from './pages/Profile.js';
 
 function App() {
   return (
@@ -28,25 +32,27 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />} >
-          <Route index element={<Home/>}/>
-          <Route path='about' element={<About/>}/>
-          <Route path='contact' element={<Contact/>}/>
-          <Route path='product' element={<OurStore/>}/>
-          <Route path='product/:id' element={<SingleProduct/>}/>
-          <Route path='blogs' element={<Blogs/>}/>
-          <Route path='cart' element={<Cart/>}/>
-          <Route path='checkout' element={<Checkout/>}/>
-          <Route path='compare-product' element={<CompareProduct/>}/>
-          <Route path='wishlist' element={<Wishlist/>}/>
-          <Route path='login' element={<Login/>}/>
-          <Route path='singup' element={<Singup/>}/>
-          <Route path='forget-password' element={<ForgetPassword/>}/>
-          <Route path='reset-password' element={<ResetPassword/>}/>
-          <Route path='blog/:id' element={<SingleBlog/>}/>   
-          <Route path='privacy-policy' element={<PrivacyPolicy/>}/> 
-          <Route path='refund-policy' element={<RefundPolicy/>}/> 
-          <Route path='shipping-policy' element={<ShippingPolicy/>}/>
-          <Route path='term-conditions' element={<TermAndConditions/>}/>     
+            <Route index element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='contact' element={<Contact />} />
+            <Route path='product' element={<OurStore />} />
+            <Route path='product/:id' element={<SingleProduct />} />
+            <Route path='blogs' element={<Blogs />} />
+            <Route path='cart' element={<PrivateRoutes><Cart /></PrivateRoutes>} />
+            <Route path='my-orders' element={<PrivateRoutes><Orders /></PrivateRoutes>} />
+            <Route path='my-profile' element={<PrivateRoutes><Profile /></PrivateRoutes>} />
+            <Route path='checkout' element={<PrivateRoutes><Checkout /></PrivateRoutes>} />
+            <Route path='compare-product' element={<CompareProduct />} />
+            <Route path='wishlist' element={<PrivateRoutes><Wishlist /></PrivateRoutes>} />
+            <Route path='login' element={<OpenRoutes><Login /></OpenRoutes>} />
+            <Route path='singup' element={<OpenRoutes><Singup /></OpenRoutes>} />
+            <Route path='forget-password' element={<ForgetPassword />} />
+            <Route path='reset-password/:token' element={<ResetPassword />} />
+            <Route path='blog/:id' element={<SingleBlog />} />
+            <Route path='privacy-policy' element={<PrivacyPolicy />} />
+            <Route path='refund-policy' element={<RefundPolicy />} />
+            <Route path='shipping-policy' element={<ShippingPolicy />} />
+            <Route path='term-conditions' element={<TermAndConditions />} />
           </Route>
         </Routes>
       </BrowserRouter>

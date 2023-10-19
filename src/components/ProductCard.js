@@ -1,96 +1,74 @@
 import React from 'react'
 import ReactStars from "react-rating-stars-component";
-import { Link, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { addToWishList, getAProduct } from '../features/products/productSlice';
+import compare from '../images/cross.svg'
+import addcart from '../images/add-cart.svg'
+import view from '../images/view.svg'
+import wishlist from '../images/wish.svg'
+import images from '../images/headphone.jpg'
 const ProductCard = (props) => {
-  const { gird } = props
+  const { id, title, brand, description, image, price, totalRating, gird } = props
+  console.log(image)
   let location = useLocation()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const addToWish = ((id) => {
+    dispatch(addToWishList(id))
+  })
+  const goToLink = () => {
+    navigate('/product/' + id)
+    dispatch(getAProduct(id))
+  }
+
   return (
     <>
-      <div className={`${location.pathname === "/product" ? `gr-${gird}` : "col-3"}`}>
-        <Link to={`${location.pathname !== '/product' ? "/product/:id" : ":id"}`} className="product-card position-relative">
+      <div
+        className={`${location.pathname === "/product" ? `gr-${gird}` : "col-3"}`}>
+        <div to='' className="product-card position-relative">
           <div className="wishlist-icon position-absolute">
-            <button className='border-0 bg-transparent'>
-              <img src="images/wish.svg" alt="wishlist" />
+            <button className='border-0 bg-transparent' onClick={(e) => { addToWish(id) }}>
+              <img src={wishlist} alt="wishlist" />
             </button>
           </div>
           <div className="product-image">
-            <img src="images/watch.jpg" className="img-fluid" alt="product" />
-            <img src="images/speaker.jpg" className="img-fluid" alt="product" />
+            <img src={image[0]?.url ? image[0].url : images} className="img-fluid max-auto" width={320} alt="product" onClick={() => goToLink()} />
+            <img onClick={() => goToLink()} src={image[1]?.url ? image[1].url : images} className="img-fluid max-auto" width={320} alt="product" />
 
           </div>
           <div className="product-details">
-            <h6 className="brand">Havels</h6>
-            <h5 className="title">Kids headphones for very usefull for students
+            <h6 className="brand">{brand}</h6>
+            <h5 className="title" onClick={() => goToLink()}>{title}
             </h5>
             <ReactStars
               count={5}
               size={24}
               edit={false}
-              value={3}
+              value={totalRating}
               activeColor="#ffd700"
             />
-            <p className={`description ${gird === 12 ? "d-block" : "d-none"}`}> watch, Portable timepiece designed to be worn on the wrist or carried in the pocket. The first watches appeared shortly after 1500, when the mainspring (see spring) was invented as a replacement for weights in driving clocks. </p>
-            <p className="price">$100.00</p>
+            <p className={`description ${gird === 12 ? "d-block" : "d-none"}`}
+              dangerouslySetInnerHTML={{ __html: description }}>
+            </p>
+            <p className="price">$ {price}</p>
           </div>
           <div className="action-bar position-absolute">
             <div className="d-flex flex-column">
               <button className='border-0 bg-transparent'>
-                <img src="images/prodcompare.svg" alt="compare" />
+                <img src={compare} alt="compare" />
               </button>
               <button className='border-0 bg-transparent'>
-                <img src="images/view.svg" alt="view" />
+                <img onClick={() => goToLink()} src={view} alt="view" />
               </button>
               <button className='border-0 bg-transparent'>
-                <img src="images/add-cart.svg" alt="addcart" />
+                <img src={addcart} alt="addcart" />
               </button>
 
             </div>
           </div>
-        </Link>
+        </div>
       </div>
-      <div className={`${location.pathname === "/product" ? `gr-${gird}` : "col-3"}`}>
-        <Link to={`${location.pathname !== '/product' ? "/product/:id" : ":id"}`} className="product-card position-relative">
-          <div className="wishlist-icon position-absolute">
-            <button className='border-0 bg-transparent'>
-              <img src="images/wish.svg" alt="wishlist" />
-            </button>
-          </div>
-          <div className="product-image">
-            <img src="images/watch.jpg" className="img-fluid" alt="product" />
-            <img src="images/speaker.jpg" className="img-fluid" alt="product" />
-
-          </div>
-          <div className="product-details">
-            <h6 className="brand">Havels</h6>
-            <h5 className="title">Kids headphones for very usefull for students
-            </h5>
-            <ReactStars
-              count={5}
-              size={24}
-              edit={false}
-              value={3}
-              activeColor="#ffd700"
-            />
-            <p className={`description ${gird === 12 ? "d-block" : "d-none"}`}> watch, Portable timepiece designed to be worn on the wrist or carried in the pocket. The first watches appeared shortly after 1500, when the mainspring (see spring) was invented as a replacement for weights in driving clocks. </p>
-            <p className="price">$100.00</p>
-          </div>
-          <div className="action-bar position-absolute">
-            <div className="d-flex flex-column">
-              <button className='border-0 bg-transparent'>
-                <img src="images/prodcompare.svg" alt="compare" />
-              </button>
-              <button className='border-0 bg-transparent'>
-                <img src="images/view.svg" alt="view" />
-              </button>
-              <button className='border-0 bg-transparent'>
-                <img src="images/add-cart.svg" alt="addcart" />
-              </button>
-
-            </div>
-          </div>
-        </Link>
-      </div>
-
     </>
   )
 }
