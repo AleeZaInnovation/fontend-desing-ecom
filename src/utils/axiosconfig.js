@@ -4,7 +4,7 @@ const getTokenFromLocalStorage = localStorage.getItem("customer")
 
 export const config = {
   headers: {
-    'access-control-allow-orgigin': '*',
+    "Access-Control-Allow-Origin": "https://fontend-ecom.netlify.app",
     Authorization: `Bearer ${getTokenFromLocalStorage !== null ? getTokenFromLocalStorage.token : ""
       }`,
     Accept: "application/json",
