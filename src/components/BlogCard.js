@@ -9,7 +9,7 @@ const BlogCard = (props) => {
       <div>
         <div className="blog-card " >
           <div className="card-image">
-            <img src={image ? image : blogs} alt="blog" className='img-fluid max-auto' width={400} />
+            <img src={image ? image : blogs} alt="blog" className='img-fluid max-auto' style={{ width: 400, height: 300 }} />
           </div>
           <div className="blog-content">
             <p className="date">{date}</p>

@@ -347,7 +347,7 @@ const SingleProduct = () => {
                                         price={item?.price}
                                         totalRating={item?.totalRating}
                                         description={item?.description}
-                                        image={item?.images[0]?.url}
+                                        image={item?.images}
                                         
                                     />
                                 )

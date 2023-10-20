@@ -25,7 +25,7 @@ const ProductCard = (props) => {
   return (
     <>
       <div
-        className={`${location.pathname === "/product" ? `gr-${gird}` : "col-3"}`}>
+        className={`${location.pathname === "/product" ? `gr-${gird}` : "col-3"} mb-3`}>
         <div to='' className="product-card position-relative">
           <div className="wishlist-icon position-absolute">
             <button className='border-0 bg-transparent' onClick={(e) => { addToWish(id) }}>
@@ -37,9 +37,9 @@ const ProductCard = (props) => {
             <img onClick={() => goToLink()} src={image[1]?.url ? image[1].url : images} className="img-fluid max-auto" width={320} alt="product" />
 
           </div>
-          <div className="product-details">
+          <div className="product-details mt-3">
             <h6 className="brand">{brand}</h6>
-            <h5 className="title" onClick={() => goToLink()}>{title}
+            <h5 className="title" onClick={() => goToLink()}>{title.substr(0, 40) + "..."}
             </h5>
             <ReactStars
               count={5}

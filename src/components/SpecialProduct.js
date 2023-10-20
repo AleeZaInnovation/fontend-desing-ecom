@@ -8,13 +8,13 @@ const SpecialProduct = (props) => {
     <div className="col-6 mb-3">
       <div className="special-product-card">
         <div className="d-flex justify-content-between">
-          <div>
-            <img src={image ? image : "images/watch.jpg"} className='img-fluid mx-auto' width={350} alt="watch" />
+          <div className='p-3'>
+            <img src={image ? image : "images/watch.jpg"} className='img-fluid mx-auto ' width={350}  alt="watch" />
           </div>
-          <div className="special-product-content">
+          <div className="special-product-content ">
             <h5 className="brand">{brand}
             </h5>
-            <h6 className="title">{title}
+            <h6 className="title">{title.substr(0,40) + "..."}
             </h6>
             <ReactStars
               count={5}

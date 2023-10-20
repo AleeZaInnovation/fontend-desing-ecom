@@ -42,12 +42,12 @@ const Home = () => {
           <div className="col-6">
             {
               <div className="main-banner position-relative">
-                <img src={blogState[0]?.images[0]?.url} alt="main banner" className='img-fluid rounded-3' style={{ width: 400, height: 400 }} />
+                <img src={blogState[0]?.images[0]?.url} alt="main banner" className='img-fluid rounded-3' style={{ width: 600, height: 400 }} />
                 <div className='main-banner-content position-absolute'>
                   <h4>{blogState[0]?.title}</h4>
                   <h5>{blogState[0]?.category}</h5>
                   <p>{moment(blogState[0]?.createdAt).format('MMMM Do')}</p>
-                  <button className='button'>BUY NOW</button>
+                  <Link to={'/blog/' + blogState[0]?._id} className='button'>Read More</Link>
                 </div>
               </div>
             }
@@ -59,7 +59,7 @@ const Home = () => {
                   if (index > 0 && index < 5) {
                     return (
                       <div className="small-banner position-relative" key={index}>
-                        <img src={item?.images[0]?.url} alt="small banner" className='img-fluid rounded-3' style={{ width: 200, height: 200 }} />
+                        <img src={item?.images[0]?.url} alt="small banner" className='img-fluid rounded-3' style={{ width: 300, height: 200 }} />
                         <div className='small-banner-content position-absolute'>
                           <h4>{item.title}</h4>
                           <h5>{item?.category}</h5>
@@ -101,7 +101,7 @@ const Home = () => {
             <div className="categories d-flex  justify-content-between flex-wrap align-items-center">
               {
                 productState && productState.map((item, index) => {
-                  if (index > 0 && index < 9) {
+                  if (index <8) {
                     return (
 
                       <div className="d-flex gap align-items-center">
@@ -226,11 +226,11 @@ const Home = () => {
       <Container class1="popular-wrapper home-wrapper-2 py-5">
 
         <div className="row">
-          <div className="col-12">
+          <div className="col-12 ">
             <h3 className="section-heading">Our Popular Products</h3>
           </div>
         </div>
-        <div className="row">
+        <div className="row py-2">
           {
             productState && productState?.map((item, index) => {
               if (item.tags === 'popular') {
@@ -295,12 +295,12 @@ const Home = () => {
           <div className="col-12">
             <h3 className="section-heading">Our Latest Projects</h3>
           </div>
-          <div className="row">
+          <div className="row" >
             {
               blogState && blogState.map((item, index) => {
                 if (index < 4) {
                   return (
-                    <div className="col-3 mb-3" key={index}>
+                    <div className="col-3 mb-3"  key={index}>
                       <BlogCard
                         id={item?._id}
                         title={item?.title}
