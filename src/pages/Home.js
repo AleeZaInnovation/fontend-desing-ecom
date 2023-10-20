@@ -42,7 +42,7 @@ const Home = () => {
           <div className="col-6">
             {
               <div className="main-banner position-relative">
-                <img src={blogState[0]?.images[0]?.url} alt="main banner" className='img-fluid rounded-3' />
+                <img src={blogState[0]?.images[0]?.url} alt="main banner" className='img-fluid rounded-3' style={{ width: 400, height: 400 }} />
                 <div className='main-banner-content position-absolute'>
                   <h4>{blogState[0]?.title}</h4>
                   <h5>{blogState[0]?.category}</h5>
@@ -59,7 +59,7 @@ const Home = () => {
                   if (index > 0 && index < 5) {
                     return (
                       <div className="small-banner position-relative" key={index}>
-                        <img src={item?.images[0]?.url} alt="small banner" className='img-fluid rounded-3' />
+                        <img src={item?.images[0]?.url} alt="small banner" className='img-fluid rounded-3' style={{ width: 200, height: 200 }} />
                         <div className='small-banner-content position-absolute'>
                           <h4>{item.title}</h4>
                           <h5>{item?.category}</h5>
