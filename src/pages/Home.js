@@ -230,7 +230,7 @@ const Home = () => {
             <h3 className="section-heading">Our Popular Products</h3>
           </div>
         </div>
-        <div className="row py-2">
+        <div className="row">
           {
             productState && productState?.map((item, index) => {
               if (item.tags === 'popular') {
