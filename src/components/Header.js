@@ -29,7 +29,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [totalAmount, setTotalAmount] = useState(null);
   const data = useSelector((state) => state?.auth?.getCartDetails)
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state?.auth);
   const [paginate, setPaginate] = useState(true);
   const productState = useSelector((state) => state?.product?.product)
   const [productOpt, setProductOpt] = useState([])
@@ -180,6 +180,7 @@ const Header = () => {
                     <NavLink to="/blogs">Blogs</NavLink>
                     <NavLink to="/contact">Contact</NavLink>
                     <button onClick={handlerLogout} className='border border-0 bg-transparent text-white text-uppercase' type='button'>Logout</button>
+                    <a href="https://admin-ecom.netlify.app/" className={auth?.user?.role === 'admin' ? 'd-flex' : 'd-none'}>Admin</a>
                   </div>
                 </div>
               </div>

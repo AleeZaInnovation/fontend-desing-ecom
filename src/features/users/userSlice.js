@@ -348,6 +348,7 @@ export const authSlice = createSlice({
                 let newData = {
                     _id: currentUserData?._id,
                     token: currentUserData?.token,
+                    role: currentUserData?.role,
                     firstname: action?.payload?.user?.firstname,
                     lastname: action?.payload?.user?.lastname,
                     email: action?.payload?.user?.email,

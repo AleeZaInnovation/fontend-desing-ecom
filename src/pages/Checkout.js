@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import axios from 'axios';
 import { config } from "../utils/axiosconfig";
+import { base_url } from '../utils/baseUrl'
 
 
 let schema = yup.object().shape({
@@ -109,7 +110,7 @@ const Checkout = () => {
             alert("Razorpay SKD failed to load !")
             return;
         }
-        const result = await axios.post("http://localhost:5000/api/v1/user/order/checkout", { amount: totalAmount + 80 }, config)
+        const result = await axios.post(`${base_url}user/order/checkout`, { amount: totalAmount + 80 }, config)
         if (!result) {
             alert("Something went wrong")
             return;
@@ -131,7 +132,7 @@ const Checkout = () => {
                     razorpayOrderId: response.razorpay_order_id,
                 };
 
-                const result = await axios.post("http://localhost:5000/api/v1/user/order/payment-verification", data, config);
+                const result = await axios.post(`${base_url}user/order/payment-verification`, data, config);
 
 
                 console.log(infoShipping);
